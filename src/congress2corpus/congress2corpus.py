@@ -12,10 +12,10 @@ from PyPDF2 import PdfReader
 def get_args():
     parser = argparse.ArgumentParser(
         description="""
-        Extract and split Senate records from 3-column format .pdf files as distributed by govinfo.gov. 
-        
-        Text is extracted using PyPDF2, split by speaker, and normalized. Speaker party affiliation is determined using 
-        open source .json files of historical and current Senators hosted on `theunitedstates.io`. There is an option 
+        Extract and split Senate records from 3-column format .pdf files as distributed by govinfo.gov.
+
+        Text is extracted using PyPDF2, split by speaker, and normalized. Speaker party affiliation is determined using
+        open source .json files of historical and current Senators hosted on `theunitedstates.io`. There is an option
         to pass these .json files in from disk if they are not available online.
         """
     )
@@ -174,8 +174,8 @@ def split_to_dicts(text):
     speaker_dict = dict()
     for block in speaker_blocks:
         if block[0] not in speaker_dict.keys():
-            speaker_dict[block[0]] = ''
-        speaker_dict[block[0]] += text[block[2]: block[3] + 1] + ' '
+            speaker_dict[block[0]] = ""
+        speaker_dict[block[0]] += text[block[2]: block[3] + 1] + " "
 
     return speaker_dict
 
@@ -228,7 +228,9 @@ def main():
                 if legislator_dict[speaker]["party"] == party:
                     out_str += text
         if out_str != "":
-            with open(Path(args["outdir"]) / f"{party}_party_corpus.txt", 'w') as out_handler:
+            with open(
+                Path(args["outdir"]) / f"{party}_party_corpus.txt", "w"
+            ) as out_handler:
                 out_handler.write(out_str)
 
 
