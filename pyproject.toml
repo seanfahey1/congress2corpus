@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "congress2corpus"
+version = "0.0.1"
+authors = [
+  { name="Sean Fahey", email="sfahey1745@sdsu.edu" },
+]
+description = "Extract and annotate congressional records from 3-column format pdf files as distributed by govinfo.gov"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+  'PyPDF2==3.0.1',
+]
+
+[project.urls]
+Homepage = "https://github.com/seanfahey1/congress2corpus"
+
+[project.scripts]
+congress2corpus = "congress2corpus.congress2corpus:main"
