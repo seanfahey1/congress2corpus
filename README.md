@@ -14,7 +14,7 @@ Sample documents I used for testing:
 ## Install
 
 ```
-git pull https://github.com/seanfahey1/congress2corpus.git
+git clone https://github.com/seanfahey1/congress2corpus.git
 cd congress2corpus && pip install .
 ```
 Note: This application was written for python 3.10+ but will probably work with earlier versions. Python and pip must 
