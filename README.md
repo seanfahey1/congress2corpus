@@ -26,6 +26,6 @@ installed and on your $PATH.
 From any command line/terminal application, run the following:
 
 ```
-congress2corpus -p [path_to_pdf_file_1.pdf] [path_to_pdf_file_2] ... --start [YYYY-MM-DD] --end [YYYY-MM-DD] -o
-/Users/sean/workspace/Sean/SDSU/LING571/Final/data/
+congress2corpus -p [path_to_pdf_file_1.pdf] [path_to_pdf_file_2.pdf] [...] [path_to_pdf_file_n.pdf] --start [YYYY-MM-DD] --end [YYYY-MM-DD] -o
+[desired output directory]
 ```
