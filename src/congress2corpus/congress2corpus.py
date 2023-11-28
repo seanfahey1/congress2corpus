@@ -151,7 +151,7 @@ def split_to_dicts(text):
         r"\nMr\. ([A-Z]{2,})\.*|"  # Mr. XYZ at start of line
         + r"\nMs\. ([A-Z]{2,})\.*|"  # Ms.
         + r"\nMrs\. ([A-Z]{2,})\.*|"  # Mrs.
-        + r"\n(The PRESIDING OFFICER )"  # Whoever is presiding at the time
+        + r"\n(The PRESIDING OFFICER)"  # Whoever is presiding at the time
     )
 
     speaker_blocks = []
@@ -183,13 +183,14 @@ def split_to_dicts(text):
 def text_normalize(text):
     """Normalize text by removing special characters and converting to lowercase."""
     terms = {
-        re.compile(r"\xad\n"): "",
-        re.compile(r"\n"): " ",
+        re.compile(r"\xad\n"): "",  # dash characters
+        re.compile(r"\n"): " ",  # new line characters
+        re.compile(r",;:\(\)#"): "",  # non-sentence ending punctuation characters
         re.compile(
             r"[0-9]* CONGRESSIONAL RECORD-SENATE [A-Z][a-z]{2,} [0-9]{1,2}, [0-9]{4}"
-        ): " ",
-        re.compile(r"\\'"): "'",
-        re.compile(r" {2,}"): " ",
+        ): " ",  # get rid of header info
+        re.compile(r"\\'"): "'",  # convert \' to '
+        re.compile(r" {2,}"): " ",  # two or more spaces
     }
     for term, new_str in terms.items():
         text = term.sub(new_str, text)
